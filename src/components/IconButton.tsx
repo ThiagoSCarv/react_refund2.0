@@ -50,7 +50,7 @@ export function IconButton({
 			{...props}
 		>
 			{isLoading ? (
-				<CircleNotch className="animate-spin" size={iconSize} />
+				<CircleNotch className="animate-spin w-" size={iconSize} />
 			) : (
 				<IconComponent size={iconSize} />
 			)}
