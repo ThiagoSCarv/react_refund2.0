@@ -14,3 +14,10 @@
 
   --font-sans: "Open Sans", sans-serif;
 }
+
+@layer base {
+  body {
+    background-color: var(--color-gray-500);
+    font-family: var(--font-sans);
+  }
+}
