@@ -1,5 +1,6 @@
 import { Link, Outlet, useNavigate } from "react-router";
 import Logo from "../../public/Logo.svg";
+
 import { Button } from "../components/Button";
 import { NavLink } from "../components/NavLink";
 
@@ -26,7 +27,7 @@ function Header() {
 
 export function LayoutMain() {
 	return (
-		<div className="min-h-screen bg-gray-500">
+		<div className="min-h-screen">
 			<Header />
 			<Outlet />
 		</div>
