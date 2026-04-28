@@ -1,5 +1,5 @@
-import { useState, useRef, useEffect } from "react";
 import { CaretDown, Check } from "@phosphor-icons/react";
+import { useEffect, useRef, useState } from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 
 const inputSelectStyles = tv({
@@ -20,7 +20,7 @@ const inputSelectStyles = tv({
 			"shadow-lg overflow-hidden py-1",
 		],
 		option: [
-			"flex items-center justify-between",
+			"flex w-full items-center justify-between",
 			"px-4 py-3 text-sm text-gray-100",
 			"cursor-pointer transition-colors duration-100",
 			"hover:bg-gray-400",
@@ -37,9 +37,15 @@ const inputSelectStyles = tv({
 				trigger: "border-gray-300",
 			},
 		},
+		readOnly: {
+			true: {
+				trigger: "cursor-default pointer-events-none border-gray-300",
+			},
+		},
 	},
 	defaultVariants: {
 		isOpen: false,
+		readOnly: false,
 	},
 });
 
@@ -67,14 +73,14 @@ export function InputSelect({
 	value,
 	onChange,
 	disabled = false,
+	readOnly = false,
 	className,
 }: InputSelectProps) {
 	const [isOpen, setIsOpen] = useState(false);
 	const wrapperRef = useRef<HTMLDivElement>(null);
 
 	const selectedOption = options.find((opt) => opt.value === value);
-
-	const styles = inputSelectStyles({ isOpen });
+	const styles = inputSelectStyles({ isOpen, readOnly });
 
 	useEffect(() => {
 		function handleClickOutside(e: MouseEvent) {
@@ -101,7 +107,7 @@ export function InputSelect({
 				className={styles.trigger()}
 				onClick={() => setIsOpen((prev) => !prev)}
 			>
-				<span className={selectedOption ? "text-gray-100" : "text-gray-300"}>
+				<span className={selectedOption ? "text-gray-200" : "text-gray-300"}>
 					{selectedOption ? selectedOption.label : placeholder}
 				</span>
 				<CaretDown
@@ -113,8 +119,9 @@ export function InputSelect({
 			{isOpen && (
 				<div className={styles.dropdown()}>
 					{options.map((opt) => (
-						<div
+						<button
 							key={opt.value}
+							type="button"
 							className={styles.option()}
 							onClick={() => handleSelect(opt.value)}
 						>
@@ -122,7 +129,7 @@ export function InputSelect({
 								{opt.label}
 							</span>
 							{opt.value === value && <Check size={16} className="text-green-200" />}
-						</div>
+						</button>
 					))}
 				</div>
 			)}

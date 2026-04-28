@@ -1,5 +1,6 @@
 import { MagnifyingGlassIcon } from "@phosphor-icons/react";
 import { useState } from "react";
+import { useNavigate } from "react-router";
 
 import { IconButton } from "../components/IconButton";
 import { InputText } from "../components/InputText";
@@ -264,6 +265,7 @@ const ALL_REFUNDS: Refund[] = [
 const PAGE_SIZE = 6;
 
 export function PageHome() {
+	const navigate = useNavigate();
 	const [page, setPage] = useState(1);
 	const [search, setSearch] = useState("");
 
@@ -301,6 +303,7 @@ export function PageHome() {
 					totalPages={totalPages}
 					onPrevPage={() => setPage((p) => Math.max(1, p - 1))}
 					onNextPage={() => setPage((p) => Math.min(totalPages, p + 1))}
+					onSelectRefund={(id) => navigate(`/refunds/${id}`)}
 				/>
 			</div>
 		</main>

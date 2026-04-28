@@ -17,6 +17,7 @@ const inputTextStyles = tv({
 			"outline-none transition-colors duration-150",
 			"focus:border-green-200",
 			"disabled:opacity-40 disabled:cursor-not-allowed",
+			"read-only:cursor-default read-only:text-gray-200 read-only:focus:border-gray-300",
 		],
 	},
 	variants: {},

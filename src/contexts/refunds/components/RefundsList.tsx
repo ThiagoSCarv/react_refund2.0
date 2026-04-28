@@ -23,6 +23,7 @@ interface RefundsListProps {
 	totalPages: number;
 	onPrevPage: () => void;
 	onNextPage: () => void;
+	onSelectRefund?: (id: string) => void;
 	isLoading?: boolean;
 }
 
@@ -32,6 +33,7 @@ export function RefundsList({
 	totalPages,
 	onPrevPage,
 	onNextPage,
+	onSelectRefund,
 	isLoading = false,
 }: RefundsListProps) {
 	return (
@@ -51,6 +53,8 @@ export function RefundsList({
 									name={refund.title}
 									category={config.label}
 									amount={refund.value}
+									onClick={() => onSelectRefund?.(refund.id)}
+									className="cursor-pointer"
 								/>
 							);
 						})}
