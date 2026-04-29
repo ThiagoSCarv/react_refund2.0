@@ -5,6 +5,7 @@ import { useParams } from "react-router";
 import { Button } from "../components/Button";
 import { InputSelect } from "../components/InputSelect";
 import { InputText } from "../components/InputText";
+import { Modal } from "../components/Modal";
 import { Skeleton } from "../components/Skeleton";
 import type { Refund } from "../contexts/refunds/types";
 import { categoryOptions } from "../utils/selectItems";
@@ -92,10 +93,14 @@ export function RefundDetails() {
 				{isLoading ? (
 					<Skeleton className="h-12" />
 				) : (
-					<Button>Excluir</Button>
+					<Modal
+						title="Excluir solicitação"
+						description="Tem certeza que deseja excluir essa solicitação? Essa ação é irreversível."
+						onConfirm={() => console.log("excluir", refund.id)}
+					>
+						<Button>Excluir</Button>
+					</Modal>
 				)}
-
-				
 			</div>
 		</main>
 	);
