@@ -5,7 +5,8 @@ const iconStyles = tv({
 	base: "inline-flex items-center justify-center rounded-full w-9 h-9",
 	variants: {
 		variant: {
-			default: "bg-gray-400 text-green-100 ",
+			default: "bg-gray-400 text-green-100",
+			inputFile: "bg-green-100 text-white w-12 h-13 rounded-xl",
 		},
 	},
 	defaultVariants: {
