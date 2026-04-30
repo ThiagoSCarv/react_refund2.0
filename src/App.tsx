@@ -14,7 +14,7 @@ function App() {
 					<Route index element={<PageHome />} />
 					<Route path="/refunds/:id" element={<RefundDetails />} />
 					<Route path="/new-refund" element={<NewRefund />} />
-					<Route path="request-sent" element={<RequestSent />} />
+					<Route path="/request-sent" element={<RequestSent />} />
 				</Route>
 			</Routes>
 		</BrowserRouter>
